@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yjn140.github.io</id>
     <title>松的博客</title>
-    <updated>2020-12-23T11:27:46.190Z</updated>
+    <updated>2020-12-23T11:28:39.176Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yjn140.github.io"/>
     <link rel="self" href="https://yjn140.github.io/atom.xml"/>
@@ -15,16 +15,10 @@
         <id>https://yjn140.github.io/A-wuTzsph/</id>
         <link href="https://yjn140.github.io/A-wuTzsph/">
         </link>
-        <updated>2020-12-19T16:49:24.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>    这篇文章来自No.553《萌芽》,即2011年10月刊。《失心》的作者是王佩，有点遗憾没能看到Ta的其他作品。但就是因为这篇文章写得真实，开始了我《萌芽》的阅读之旅。</p>
-</blockquote>
-<p>身在高三的荣荣暗恋着坏女孩陈瑭，不能自拔，上大学后都无法从容地展开新恋情，他积蓄已久的感情在他们分别的第一个寒假终于爆发，他却搞砸了。</p>
+        <updated>2020-12-19T08:49:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>    身在高三的荣荣暗恋着坏女孩陈瑭，不能自拔，上大学后都无法从容地展开新恋情，他积蓄已久的感情在他们分别的第一个寒假终于爆发，他却搞砸了。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>    这篇文章来自No.553《萌芽》,即2011年10月刊。《失心》的作者是王佩，有点遗憾没能看到Ta的其他作品。但就是因为这篇文章写得真实，开始了我《萌芽》的阅读之旅。</p>
-</blockquote>
-<p>身在高三的荣荣暗恋着坏女孩陈瑭，不能自拔，上大学后都无法从容地展开新恋情，他积蓄已久的感情在他们分别的第一个寒假终于爆发，他却搞砸了。</p>
+        <content type="html"><![CDATA[<p>    身在高三的荣荣暗恋着坏女孩陈瑭，不能自拔，上大学后都无法从容地展开新恋情，他积蓄已久的感情在他们分别的第一个寒假终于爆发，他却搞砸了。</p>
 ]]></content>
     </entry>
     <entry>
