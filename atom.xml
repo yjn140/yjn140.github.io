@@ -2,14 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yjn140.github.io</id>
     <title>松的博客</title>
-    <updated>2020-12-24T00:54:31.815Z</updated>
+    <updated>2020-12-24T01:29:49.710Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yjn140.github.io"/>
     <link rel="self" href="https://yjn140.github.io/atom.xml"/>
-    <subtitle>记录点滴</subtitle>
+    <subtitle>记录点滴
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=110 src=&quot;//music.163.com/outchain/player?type=0&amp;id=614012016&amp;auto=1&amp;height=90&quot;&gt;&lt;/iframe&gt;</subtitle>
     <logo>https://yjn140.github.io/images/avatar.png</logo>
     <icon>https://yjn140.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 松的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[网易云音乐]]></title>
+        <id>https://yjn140.github.io/85aF5gYlh/</id>
+        <link href="https://yjn140.github.io/85aF5gYlh/">
+        </link>
+        <updated>2020-12-23T16:57:36.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[失心 - 王佩]]></title>
         <id>https://yjn140.github.io/A-wuTzsph/</id>
