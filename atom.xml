@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yjn140.github.io</id>
     <title>松的博客</title>
-    <updated>2021-01-02T15:51:22.344Z</updated>
+    <updated>2021-01-02T15:53:13.280Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yjn140.github.io"/>
     <link rel="self" href="https://yjn140.github.io/atom.xml"/>
@@ -10,13 +10,6 @@
     <logo>https://yjn140.github.io/images/avatar.png</logo>
     <icon>https://yjn140.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 松的博客</rights>
-    <entry>
-        <title type="html"><![CDATA[插入图片路径测试]]></title>
-        <id>https://yjn140.github.io/k_5p3tfWX/</id>
-        <link href="https://yjn140.github.io/k_5p3tfWX/">
-        </link>
-        <updated>2021-01-02T15:50:35.000Z</updated>
-    </entry>
     <entry>
         <title type="html"><![CDATA[失心 - 王佩]]></title>
         <id>https://yjn140.github.io/A-wuTzsph/</id>
