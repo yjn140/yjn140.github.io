@@ -2,11 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yjn140.github.io</id>
     <title>松的博客</title>
-    <updated>2021-01-02T15:53:13.280Z</updated>
+    <updated>2021-01-02T16:01:47.189Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yjn140.github.io"/>
     <link rel="self" href="https://yjn140.github.io/atom.xml"/>
-    <subtitle>这是一个依托于GitHub服务器，用Gridea搭建起的个人博客。博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</subtitle>
+    <subtitle>这是一个依托于GitHub服务器，用Gridea搭建起的个人博客。博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”
+&lt;embed src=&quot;https://yjn140.github.io/post-images/荧惑吖丶 - 说散就散（Cover Tia Ray）.mp3&quot; autostart=&quot;true&quot; loop=&quot;true&quot; hidden=&quot;true&quot;&gt;&lt;/embed&gt;
+</subtitle>
     <logo>https://yjn140.github.io/images/avatar.png</logo>
     <icon>https://yjn140.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 松的博客</rights>
