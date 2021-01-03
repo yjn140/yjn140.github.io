@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yjn140.github.io</id>
     <title>松的博客</title>
-    <updated>2021-01-03T12:35:20.636Z</updated>
+    <updated>2021-01-03T12:37:53.368Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yjn140.github.io"/>
     <link rel="self" href="https://yjn140.github.io/atom.xml"/>
@@ -16,6 +16,16 @@
         <link href="https://yjn140.github.io/9JTUZi2aZ/">
         </link>
         <updated>2021-01-03T12:30:50.000Z</updated>
+        <summary type="html"><![CDATA[<p>1、三者的关系：</p>
+<pre><code>国标码 = 区位码 + 2020H；
+机内码 = 国标码 + 8080H；
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p>1、三者的关系：</p>
+<pre><code>国标码 = 区位码 + 2020H；
+机内码 = 国标码 + 8080H；
+</code></pre>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[失心 - 王佩]]></title>
