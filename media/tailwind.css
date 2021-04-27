@@ -3966,7 +3966,7 @@ video {
 }
 
 .leading-relaxed {
-  line-height: 1.625;
+  line-height: 3.2;
 }
 
 .leading-loose {
@@ -13669,7 +13669,7 @@ video {
 }
 
 .markdown {
-  line-height: 1.625;
+  line-height: 3.2;
 }
 
 .markdown > *:first-child {
@@ -17615,7 +17615,7 @@ pre code.markdown,
   }
 
   .sm\:leading-relaxed {
-    line-height: 1.625;
+    line-height: 3.2;
   }
 
   .sm\:leading-loose {
@@ -30581,7 +30581,7 @@ pre code.markdown,
   }
 
   .md\:leading-relaxed {
-    line-height: 1.625;
+    line-height: 3.2;
   }
 
   .md\:leading-loose {
@@ -32221,8 +32221,8 @@ pre code.markdown,
   }
 
   .md\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
   }
 
   .md\:px-32 {
@@ -43547,7 +43547,7 @@ pre code.markdown,
   }
 
   .lg\:leading-relaxed {
-    line-height: 1.625;
+    line-height: 3.2;
   }
 
   .lg\:leading-loose {
@@ -56513,7 +56513,7 @@ pre code.markdown,
   }
 
   .xl\:leading-relaxed {
-    line-height: 1.625;
+    line-height: 3.2;
   }
 
   .xl\:leading-loose {
@@ -69479,7 +69479,7 @@ pre code.markdown,
   }
 
   .dark\:leading-relaxed {
-    line-height: 1.625;
+    line-height: 3.2;
   }
 
   .dark\:leading-loose {
@@ -82445,7 +82445,7 @@ pre code.markdown,
   }
 
   .light\:leading-relaxed {
-    line-height: 1.625;
+    line-height: 3.2;
   }
 
   .light\:leading-loose {
