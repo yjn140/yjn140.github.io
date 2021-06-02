@@ -14,19 +14,37 @@
 
     
 
-  <meta name="description" content="直接放哔哩哔哩链接：
- ..." />
+  <meta name="description" content="
+此项目利用Excel宏生成青年大学习未完成名单--适用于江西省青年大学习后台导出系统（云瓣科技）
+
+
+具体的使用步骤
+
+下载并打开生成器/default.xlsm
+点击一下“打开/保存”团员名单，把需要检查完成情况的人员名单替换上去。班上..." />
   <meta property="og:title" content="基于Excel宏实现的江西青年大学习未完成名单生成 - 松的博客">
-  <meta property="og:description" content="直接放哔哩哔哩链接：
- ..." />
+  <meta property="og:description" content="
+此项目利用Excel宏生成青年大学习未完成名单--适用于江西省青年大学习后台导出系统（云瓣科技）
+
+
+具体的使用步骤
+
+下载并打开生成器/default.xlsm
+点击一下“打开/保存”团员名单，把需要检查完成情况的人员名单替换上去。班上..." />
   <meta property="og:type" content="articles">
   <meta property="og:url" content="https://yjn140.github.io/xPXLDaML1/" />
   <meta property="og:image" content="https://yjn140.github.io/post-images/xPXLDaML1.jpg">
   <meta property="og:image:height" content="630">
   <meta property="og:image:width" content="1200">
   <meta name="twitter:title" content="基于Excel宏实现的江西青年大学习未完成名单生成 - 松的博客">
-  <meta name="twitter:description" content="直接放哔哩哔哩链接：
- ...">
+  <meta name="twitter:description" content="
+此项目利用Excel宏生成青年大学习未完成名单--适用于江西省青年大学习后台导出系统（云瓣科技）
+
+
+具体的使用步骤
+
+下载并打开生成器/default.xlsm
+点击一下“打开/保存”团员名单，把需要检查完成情况的人员名单替换上去。班上...">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://yjn140.github.io/xPXLDaML1/">
 
@@ -56,7 +74,7 @@
           <img src="https://yjn140.github.io/post-images/xPXLDaML1.jpg" alt="基于Excel宏实现的江西青年大学习未完成名单生成" class="block w-full mb-8">
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2021-06-01 · 1 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2021-06-01 · 2 min read</div>
           
             <a href="https://yjn140.github.io/BFKweRoOM/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -65,8 +83,31 @@
           
         </div>
         <div class="markdown mb-8" v-pre>
-          <p>直接放哔哩哔哩链接：</p>
-<iframe src="//player.bilibili.com/player.html?aid=760869898&bvid=BV1t64y1k7H3&cid=345880383&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+          <blockquote>
+<p>此项目利用Excel宏生成青年大学习未完成名单--适用于江西省青年大学习后台导出系统（云瓣科技）</p>
+</blockquote>
+<hr>
+<h3 id="具体的使用步骤">具体的使用步骤</h3>
+<ol>
+<li>下载并打开<a href="https://download.fastgit.org/yjn140/Generate-an-incomplete-list-of-youth-college-studies/releases/download/1.1/default.xlsm"><code>生成器/default.xlsm</code></a></li>
+<li>点击一下“打开/保存”团员名单，把需要检查完成情况的人员名单替换上去。<u>班上团员名单或者全班的名单，取决于每个学校的要求----团员必须做&amp;每个人都要做</u></li>
+<li>把这个excel文件保存，以后每次都可以使用这个文件执行代码后，把未完成名单拷贝到其他excel表格</li>
+<li>从<a href="https://jxtw.h5yunban.cn/jxtw-qndxx/admin/login.php">江西青年大学习管理后台</a>下载某一团支部，某一期的青年大学习完成情况。<u>一个.csv文件</u></li>
+<li>把这个<code>.csv文件</code>更名为<code>导出文件.csv</code>,并和<code>生成器.xlsm</code>放在同一个目录（例如桌面）</li>
+<li>在<code>生成器/default.xlsm</code>界面点击<strong>生成</strong></li>
+<li>然后就会生成好名单</li>
+</ol>
+<hr>
+<h3 id="视频介绍">视频介绍</h3>
+<p><a href="#">点击查看</a></p>
+<hr>
+<h3 id="更新日志">更新日志</h3>
+<ul>
+<li>2021.4.15  上传生成器</li>
+<li>2021.5.18  增加对.csv文件是否更名的判i断</li>
+<li>2021.5.23 彻底解决数据表刷新不顺序执行的问题 <a href="http://club.excelhome.net/thread-1131212-1-1.html">网上找到的解决方案</a>     （大概原因是<code>ActiveWorkbook.RefreshAll</code>这个函数在vba里面并不是顺序执行，而是在所有函数执行完之后执行。当遇到上次所使用到的.csv文件的数据被保存在生成器中的情况，下一次制作就会因为代码无法顺序执行而导致生成出来的未完成名单出错。解决方法就是在数据--查询链接 里面关闭后台刷新）</li>
+</ul>
+
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
         <div class="flex items-center">
@@ -107,7 +148,20 @@
         </div>
       </div>
       <div class="post-toc-container">
-        
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%85%B7%E4%BD%93%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4">具体的使用步骤</a></li>
+<li><a href="#%E8%A7%86%E9%A2%91%E4%BB%8B%E7%BB%8D">视频介绍</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97">更新日志</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
       </div>
     </div>
 

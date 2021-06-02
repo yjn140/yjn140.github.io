@@ -120,24 +120,24 @@ a:not([class]):hover {
         }
       }
     
-      //这是用来定义B站外部链接的CSS，以提高画质和网页居中
-.aspect-ratio {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 75%;
+      /*哔哩哔哩视频适配*/
+
+.bilibili {
+    position: relative;
+    width: 100%;
 }
-
-.aspect-ratio iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+@media only screen and (max-width: 767px) {
+    .bilibili {height: 15em;max-width: 25em;}
 }
-//这是用来定义B站外部链接的CSS，以提高画质和网页居中
-
-
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .bilibili {height: 20em;max-width: 30em;}
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .bilibili {height: 30em;max-width: 40em;}
+}
+@media only screen and (min-width: 1200px) {
+    .bilibili {height: 40em;max-width: 50em;}
+}
 
 
 
