@@ -145,6 +145,8 @@
       
 
       
+        <div id="vlaine-comment"></div>
+      
 
       <footer class="py-12 text-center px-4 md:px-0" v-pre>
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>@nbsp;@nbsp;联系我：3046224601@.qq.com
@@ -323,6 +325,23 @@
     //初始化
     initImg();
   </script>
+  
+    <script type="application/javascript" src="https://unpkg.com/valine"></script>
+<script type="application/javascript">
+  new Valine({
+    el: '#vlaine-comment',
+    appId: 'INIV7p9Souw8TCNgorzEFDKL-gzGzoHsz',
+    appKey: 'O4UlwuExAsqaVTYDleea1fx6',
+    pageSize: 10,
+    notify: true,
+    avatar: 'mp',
+    verify: false,
+    placeholder: '来都来了，不妨评论一下',
+    visitor: true,
+    highlight: true,
+    recordIP: true,
+  })
+</script>
   
   
 </body>
