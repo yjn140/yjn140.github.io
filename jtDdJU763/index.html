@@ -1,0 +1,246 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>为右键菜单添加&#34;复制文件路径&#34; | Microthink-yjn140</title>
+
+<link rel="shortcut icon" href="https://yjn140.site/favicon.ico?v=1690542654805">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yjn140.site/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.1/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script> 
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Microthink-yjn140
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1690542654805"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    为右键菜单添加&#34;复制文件路径&#34;
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-07-25 ·
+                    </time>
+                    
+                        <a href="https://yjn140.site/BFKweRoOM/" class="post-tags">
+                            # 技术
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>有时候在使用命令行的时候,需要用到文件的完整路径执行相应的操作,那么除了拖拽文件到控制台来获取路径,给桌面的右键菜单添加一个快捷选项,是个不错的方法.</p>
+<!-- more -->
+<p>具体操作如下:</p>
+<ol>
+<li>
+<p>创建一个文本文件</p>
+</li>
+<li>
+<p>对其进行编辑,写入以下代码</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Allfilesystemobjects\shell\windows.copyaspath]
+
+&quot;CanonicalName&quot;=&quot;{707C7BC6-685A-4A4D-A275-3966A5A3EFAA}&quot;
+
+&quot;CommandStateHandler&quot;=&quot;{3B1599F9-E00A-4BBF-AD3E-B3F99FA87779}&quot;
+
+&quot;CommandStateSync&quot;=&quot;&quot;
+
+&quot;Description&quot;=&quot;@shell32.dll,-30336&quot;
+
+&quot;Icon&quot;=&quot;imageres.dll,-5302&quot;
+
+&quot;InvokeCommandOnSelection&quot;=dword:00000001
+
+&quot;MUIVerb&quot;=&quot;@shell32.dll,-30329&quot;
+
+&quot;VerbHandler&quot;=&quot;{f3d06e7c-1e45-4a26-847e-f9fcdee59be0}&quot;
+
+&quot;VerbName&quot;=&quot;copyaspath&quot;
+</code></pre>
+</li>
+<li>
+<p>将.txt文件重命名为.reg</p>
+</li>
+<li>
+<p>双击运行,整合进注册表</p>
+</li>
+</ol>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://yjn140.site/xPXLDaML1/" class="post-title gt-a-link">
+                    基于Excel宏实现的江西青年大学习未完成名单生成
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'INIV7p9Souw8TCNgorzEFDKL-gzGzoHsz',
+		appKey: 'O4UlwuExAsqaVTYDleea1fx6',
+		avatar: 'monsterid',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yjn140" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        联系我：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=aqjmaKpHkvEoOentnmEK2E1AfkB4-i85&noverify=0
+">QQ</a> <br><br>
+<a href="https://beian.miit.gov.cn/#/Integrated/index"   target="_blank">赣ICP备2021010019号-1</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://yjn140.site/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

